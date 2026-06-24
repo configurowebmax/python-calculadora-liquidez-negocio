@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Liquidez | Python · ConfiguroWeb</title>
+  <meta name="description" content="Liquidez = activos corrientes / pasivos corrientes.">
+  <meta property="og:title" content="Calculadora de Liquidez · Python">
+  <meta property="og:description" content="Liquidez = activos corrientes / pasivos corrientes.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>💧 Calculadora de Liquidez</h1>
+      <p class="tagline">Calcula tu razón corriente (liquidez)</p>
+    </div>
+  </header>
+  <main class="container">
+    <div id="py-loader" class="loader" style="text-align:center;padding:2rem;color:#64748b;">
+      <div class="spinner"></div>
+      <p>Cargando Python (PyScript)…</p>
+    </div>
+    <section id="app" class="app-card hidden">
+      <div class="form-grid">
+        <div class="form-group">
+  <label for="activos">💰 Activos corrientes</label>
+  <input type="number" id="activos" min="0" step="0.01" placeholder="Ej: 5000000">
+  <small>Efectivo + cuentas por cobrar</small>
+</div>
+        <div class="form-group">
+  <label for="pasivos">💸 Pasivos corrientes</label>
+  <input type="number" id="pasivos" min="0" step="0.01" placeholder="Ej: 3000000">
+  <small>Deudas a corto plazo</small>
+</div>
+      </div>
+      <div class="actions">
+        <button py-click="calcular_handler" class="btn btn-primary">📊 Calcular</button>
+        <button py-click="guardar_datos" class="btn btn-secondary">💾 Guardar datos</button>
+      </div>
+      <div id="resultado" class="result-box hidden" role="status" aria-live="polite"></div>
+    </section>
+    <section class="info-section">
+      <h2>¿Qué es Calculadora de Liquidez?</h2>
+      <p>Si >1, puedes pagar tus deudas a corto plazo.</p>
+      <p>App construida con <strong>Python real</strong> (PyScript) en tu navegador.
+         Tus datos se guardan localmente, nunca salen de tu equipo.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Hecho con 🐍 Python + PyScript por
+        <a href="https://configuroweb.com" target="_blank" rel="noopener">ConfiguroWeb</a> · 2026</p>
+    </div>
+  </footer>
+  <script type="py" src="app.py" async></script>
+  <script>
+    window.addEventListener('py:ready', () => {
+      document.getElementById('py-loader').classList.add('hidden');
+      document.getElementById('app').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
